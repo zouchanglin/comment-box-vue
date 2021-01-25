@@ -1,0 +1,243 @@
+{
+  "grinning": {
+    "keywords": ["face", "smile", "happy", "joy", ":D", "grin"],
+    "char": "😀",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "grin": {
+    "keywords": ["face", "happy", "smile", "joy", "kawaii"],
+    "char": "😁",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "smiley": {
+    "keywords": ["face", "happy", "joy", "haha", ":D", ":)", "smile", "funny"],
+    "char": "😃",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "smile": {
+    "keywords": ["face", "happy", "joy", "funny", "haha", "laugh", "like", ":D", ":)"],
+    "char": "😄",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "sweat_smile": {
+    "keywords": ["face", "hot", "happy", "laugh", "sweat", "smile", "relief"],
+    "char": "😅",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "laughing": {
+    "keywords": ["happy", "joy", "lol", "satisfied", "haha", "face", "glad", "XD", "laugh"],
+    "char": "😆",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "innocent": {
+    "keywords": ["face", "angel", "heaven", "halo"],
+    "char": "😇",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "wink": {
+    "keywords": ["face", "happy", "mischievous", "secret", ";)", "smile", "eye"],
+    "char": "😉",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "blush": {
+    "keywords": ["face", "smile", "happy", "flushed", "crush", "embarrassed", "shy", "joy"],
+    "char": "😊",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "slightly_smiling_face": {
+    "keywords": ["face", "smile"],
+    "char": "🙂",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "yum": {
+    "keywords": ["happy", "joy", "tongue", "smile", "face", "silly", "yummy", "nom", "delicious", "savouring"],
+    "char": "😋",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "heart_eyes": {
+    "keywords": ["face", "love", "like", "affection", "valentines", "infatuation", "crush", "heart"],
+    "char": "😍",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "kissing_heart": {
+    "keywords": ["face", "love", "like", "affection", "valentines", "infatuation", "kiss"],
+    "char": "😘",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "kissing": {
+    "keywords": ["love", "like", "face", "3", "valentines", "infatuation", "kiss"],
+    "char": "😗",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "kissing_smiling_eyes": {
+    "keywords": ["face", "affection", "valentines", "infatuation", "kiss"],
+    "char": "😙",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "kissing_closed_eyes": {
+    "keywords": ["face", "love", "like", "affection", "valentines", "infatuation", "kiss"],
+    "char": "😚",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "stuck_out_tongue_winking_eye": {
+    "keywords": ["face", "prank", "childish", "playful", "mischievous", "smile", "wink", "tongue"],
+    "char": "😜",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "stuck_out_tongue_closed_eyes": {
+    "keywords": ["face", "prank", "playful", "mischievous", "smile", "tongue"],
+    "char": "😝",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "stuck_out_tongue": {
+    "keywords": ["face", "prank", "childish", "playful", "mischievous", "smile", "tongue"],
+    "char": "😛",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "sunglasses": {
+    "keywords": ["face", "cool", "smile", "summer", "beach", "sunglass"],
+    "char": "😎",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "roll_eyes": {
+    "keywords": ["face", "eyeroll", "frustrated"],
+    "char": "🙄",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "flushed": {
+    "keywords": ["face", "blush", "shy", "flattered"],
+    "char": "😳",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "rage": {
+    "keywords": ["angry", "mad", "hate", "despise"],
+    "char": "😡",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "confused": {
+    "keywords": ["face", "indifference", "huh", "weird", "hmmm", ":/"],
+    "char": "😕",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "tired_face": {
+    "keywords": ["sick", "whine", "upset", "frustrated"],
+    "char": "😫",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "triumph": {
+    "keywords": ["face", "gas", "phew", "proud", "pride"],
+    "char": "😤",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "fearful": {
+    "keywords": ["face", "scared", "terrified", "nervous", "oops", "huh"],
+    "char": "😨",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "mask": {
+    "keywords": ["face", "sick", "ill", "disease"],
+    "char": "😷",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "face_with_thermometer": {
+    "keywords": ["sick", "temperature", "thermometer", "cold", "fever"],
+    "char": "🤒",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "face_with_head_bandage": {
+    "keywords": ["injured", "clumsy", "bandage", "hurt"],
+    "char": "🤕",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "sleeping": {
+    "keywords": ["face", "tired", "sleepy", "night", "zzz"],
+    "char": "😴",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "zzz": {
+    "keywords": ["sleepy", "tired", "dream"],
+    "char": "💤",
+    "fitzpatrick_scale": false,
+    "category": "people"
+  },
+  "clap": {
+    "keywords": ["hands", "praise", "applause", "congrats", "yay"],
+    "char": "👏",
+    "fitzpatrick_scale": true,
+    "category": "people"
+  },
+  "call_me_hand": {
+    "keywords": ["hands", "gesture"],
+    "char": "🤙",
+    "fitzpatrick_scale": true,
+    "category": "people"
+  },
+  "+1": {
+    "keywords": ["thumbsup", "yes", "awesome", "good", "agree", "accept", "cool", "hand", "like"],
+    "char": "👍",
+    "fitzpatrick_scale": true,
+    "category": "people"
+  },
+  "-1": {
+    "keywords": ["thumbsdown", "no", "dislike", "hand"],
+    "char": "👎",
+    "fitzpatrick_scale": true,
+    "category": "people"
+  },
+  "facepunch": {
+    "keywords": ["angry", "violence", "fist", "hit", "attack", "hand"],
+    "char": "👊",
+    "fitzpatrick_scale": true,
+    "category": "people"
+  },
+  "raised_back_of_hand": {
+    "keywords": ["fingers", "raised", "backhand"],
+    "char": "🤚",
+    "fitzpatrick_scale": true,
+    "category": "people"
+  },
+  "clock1": {
+    "keywords": ["time", "late", "early", "schedule"],
+    "char": "🕐",
+    "fitzpatrick_scale": false,
+    "category": "symbols"
+  },
+
+  "caihong": {
+    "keywords": ["time", "late", "early", "schedule"],
+    "char": "🥟",
+    "fitzpatrick_scale": false,
+    "category": "symbols"
+  }
+}
