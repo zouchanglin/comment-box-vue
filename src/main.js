@@ -9,6 +9,7 @@ import './assets/font/iconfont.css'
 import axios from 'axios'
 // 配置请求根路径
 axios.defaults.baseURL = 'https://comment.zouchanglin.cn/api/'
+// axios.defaults.baseURL = 'http://127.0.0.1:8081/api/'
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.transformRequest = [function (data) {

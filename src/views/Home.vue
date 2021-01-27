@@ -1,57 +1,31 @@
 <template>
-  <div class="container_border page_center">
+  <div class="container_border" style="min-width: 260px">
     <el-form ref="form" :model="commentFormArea" label-width="100px">
       <div style="white-space: nowrap; margin-top: 10px; ">
         <!-- 邮箱 -->
-        <img style="height: 40px; width: 40px; border-radius: 20px; vertical-align: middle" :src="clientData.clientIcon" alt=""/>
+        <img style="height: 40px; width: 40px; border-radius: 20px; vertical-align: middle" :src="clientData.clientIcon" alt="Load Error!"/>
         <el-tooltip style="margin-top: 4px; margin-bottom: 4px; margin-left: 20px" effect="dark" content="点击可以刷新头像与昵称哦" placement="bottom">
           <el-button style="margin-left: 5px; padding: 10px" size="medium" @click="updateNameIcon()">{{ clientData.clientName }}</el-button>
         </el-tooltip>
-        <el-input placeholder="留下Email可以回复提醒哦 ~"
-                  prefix-icon="el-icon-position"
-                  style="width: 250px; margin-left: 10px; float: right"
+      </div>
+      <div style="white-space: nowrap; margin-top: 10px; ">
+        <el-input placeholder="留下Email可以回复提醒"
+                  prefix-icon="el-icon-message"
                   v-model="clientData.clientEmail"
-                  type="email"
-                  clearable>
+                  type="text"
+                  size="medium"
+                  maxlength="30"
+                  show-word-limit>
         </el-input>
       </div>
       <div style="white-space: nowrap; margin-top: 10px; ">
-        <el-input v-model="commentFormArea.content"  type="textarea" style="width: 100%; border-radius: 6px"
-                  :autosize="{ minRows: 2}">
+        <el-input v-model="commentFormArea.content"  type="textarea" style="width: 100%; border-radius: 20px"
+                  :autosize="{ minRows: 3}" placeholder="来说点什么吧" @input="changeCommentButtonStatus()">
         </el-input>
       </div>
-      <!-- 表情输入单元 -->
-      <el-popover
-        placement="bottom"
-        title="表情"
-        width="600"
-        height="2600"
-        trigger="click"
-        v-model="emojiShow">
-        <el-button slot="reference" style="font-size: 14px; margin-top: 10px;">插入表情 😀</el-button>
-        <div class="browBox">
-          <ul>
-            <li v-for="(item, index) in faceList" :key="index" @click="getBrow(index)">
-              {{ item }}
-            </li>
-          </ul>
-        </div>
-      </el-popover>
-      <div class="my-item my-submit" style="margin-right: 20px">
-        <el-row>
-          <el-col :span="14">
-            <!--allow-half="allow-half"-->
-            <el-rate
-              v-model="commentFormArea.articleScore"
-              show-score
-              text-color="#ff9900"
-              style="margin-top: 8px; margin-right: 20px; size: 30px"
-              score-template="{value}">
-            </el-rate>
-          </el-col>
-          <el-col :span="4">
-            <el-button type="success" round @click="submitComment">评论一下 ~</el-button>
-          </el-col>
+      <div style="white-space: nowrap; margin-top: 20px;">
+        <el-row style="width: 100%">
+          <el-button :type="this.commentButtonType" round @click="submitComment()" style="float: right" :disabled="this.commentButtonEnable"> {{ this.commentButtonText }}</el-button>
         </el-row>
       </div>
     </el-form>
@@ -129,26 +103,10 @@
 export default {
   name: 'Home',
   created () {
-    this.loadEmojis()
     this.getCommentsData()
     this.checkUserData()
   },
   methods: {
-    // 加载表情，存放到表情列表中
-    loadEmojis () {
-      const appData = require('@/assets/images/emojis.json')
-      for (const i in appData) {
-        // eslint-disable-next-line no-prototype-builtins
-        if (appData.hasOwnProperty(i)) {
-          this.faceList.push(appData[i].char)
-        }
-      }
-    },
-    // 获取用户点击之后的标签 ，存放到输入框内
-    getBrow (index) {
-      this.commentFormArea.content += this.faceList[index]
-      this.emojiShow = false
-    },
     // 评论点赞
     async praiseForComment(commentId, type){
       // alert(commentId)
@@ -163,6 +121,17 @@ export default {
     },
     // 提交评论
     async submitComment () {
+      const str = this.commentFormArea.content
+      // 检查评论内容
+      if(str === null || str === '') {
+        alert('请输入评论内容 （Please enter comment content!）')
+        return
+      }
+      // 检查Email
+      if(!this.checkEmailInput()) {
+        alert('邮箱格式错误')
+        return
+      }
       const { data: res } = await this.$http.post('comments', {
         email: this.clientData.clientEmail,
         clientId: this.clientData.clientId,
@@ -172,7 +141,17 @@ export default {
       })
       console.log('res = ' + res.data)
       this.queryCommentsData = res.data
-      this.commentFormArea.content = '来说点什么吧😀'
+      this.commentFormArea.content = ''
+      if(res.code === 200) {
+        this.$message.success({ duration: 2500, message: '评论成功!', showClose: true })
+      }
+    },
+    checkEmailInput() {
+      const inputEmail = this.clientData.clientEmail
+      if(inputEmail !== null && inputEmail !== '' && inputEmail.length >= 1) {
+        const reg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/
+        return reg.test(inputEmail)
+      }
     },
     // 回复框关闭
     addDialogClosed () {
@@ -210,7 +189,7 @@ export default {
         return this.$message.error('更新头像失败!')
       }
       this.clientData = res.data
-      this.$message.success({ duration: 1000, message: '更新头像成功!', showClose: true })
+      this.$message.success({ duration: 2500, message: '更新头像成功!', showClose: true })
       await this.getCommentsData()
     },
     // 获取评论区数据
@@ -241,11 +220,28 @@ export default {
       }
       // 渲染用户信息
       const { data: res } = await this.$http.get('client/' + tmpClientId)
-      if(res.code !== 200) {
-        this.$message.error({ duration: 0, message: '获取ClientId失败', showClose: true })
+      if(res.code === 201) {
+        // 如果服务器端不存在clientId，直接clear localStorage
+        window.localStorage.clear()
+        window.location.reload()
+      }else if(res.code === 200){
+        this.clientData = res.data
+        console.log('this.clientData = ' + this.clientData)
+      }else {
+        this.$message.error({ duration: 0, message: '服务器正忙', showClose: true })
       }
-      this.clientData = res.data
-      console.log('this.clientData = ' + this.clientData)
+    },
+    // 根据输入的状态改变
+    changeCommentButtonStatus() {
+      if(this.commentFormArea.content !== null && (this.commentFormArea.content.length >= 2 && this.commentFormArea.content.length <= 300)){
+        this.commentButtonEnable = false
+        this.commentButtonText = '提交我的评论'
+        this.commentButtonType = 'success'
+      }else {
+        this.commentButtonEnable = true
+        this.commentButtonText = '字数太少/多了'
+        this.commentButtonType = 'danger'
+      }
     },
     // 获取浏览器信息
     getExplorerInfo() {
@@ -335,7 +331,7 @@ export default {
       },
       // 页面加载时获取评论
       queryCommentsData: [{
-        avatarUrl: '',
+        avatarUrl: 'https://www.thiswaifudoesnotexist.net/example-5419.jpg',
         childComments: [
           {
             id: 0,
@@ -365,7 +361,7 @@ export default {
       getBrowString: '',
       commentFormArea: {
         articleScore: 5,
-        content: '来说点什么吧😀'
+        content: ''
       },
       // 对话框回复对象
       replyForm: {
@@ -375,7 +371,11 @@ export default {
         parentCommentId: ''
       },
       // 评论时间线
-      reverse: true
+      reverse: true,
+      // 评论按钮是否可用
+      commentButtonEnable: true,
+      commentButtonText: '字数太少/多了',
+      commentButtonType: 'danger'
     }
   }
 }
@@ -390,36 +390,13 @@ export default {
   padding-right: 20px;
 }
 
-.el-input .el-input__inner{
-  //background-color: #eaeaea;
-}
-
-.el-textarea .el-textarea__inner {
-  //background-color: #eaeaea;
-  min-height: 100px;
-}
-
 .container_border {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
   margin-left: 20px;
   margin-right: 20px;
-  //border: 2px solid #4398ed;
   border-radius: 10px;
-  //box-shadow: 3px 3px 2px #909399;
-}
-
-.page_center {
-  min-width: 430px;
-  //padding: 20px;
-  //width: 100%;
-  //height: auto;
-  //position: absolute;
-  //left: 50%;
-  //top: 50%;
-  //transform: translate(-50%, -50%);
-  background-color: #FFFFFF;
 }
 
 .my-item {
@@ -475,8 +452,7 @@ export default {
   position:absolute;
   top:50%;
   left:50%;
-  transform:translate(-50%,-50%);
-  /*height:600px;*/
+  transform:translate(-50%, -50%);
   max-height:calc(100% - 200px);
   max-width:calc(100% - 30px);
 }
@@ -484,5 +460,4 @@ export default {
   flex:1;
   overflow: auto;
 }
-
 </style>
